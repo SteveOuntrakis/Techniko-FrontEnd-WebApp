@@ -1,0 +1,43 @@
+<h2>Insert a new Property:</h2>
+<br>
+<form [formGroup]="createPropertyForm" (ngSubmit)="CreateProperty()">
+  <input type="text" formControlName="address" placeholder="Address">
+  @if (address?.hasError('required') && address?.touched) {<div>Address Required</div>}
+
+  <br><br>
+
+  <input type="number" formControlName="yearOfConstruction" placeholder="Year of Construction" form>
+  @if (yearOfConstruction?.hasError('required') && yearOfConstruction?.touched) {<div>Year of Construction Required</div>}
+
+  <br><br>
+
+  <div class ="col-1">
+  <div class="input-group" >   
+    <select formControlName="propertyType">
+          <option [value]="0">House</option>
+          <option [value]="1">Apartment</option>
+          <option [value]="2">Detached_House</option>
+          <option [value]="3">Maisonette</option>
+      </select>
+    </div>
+  </div>
+  @if (propertyType?.hasError('required') && propertyType?.touched) {<div>Property Type Required</div>}
+  
+  <br><br>
+
+  <!-- Owner Information (Hardcoded for this example, you can change as necessary) -->
+  <!-- <h3>Owner Information (Already fetched)</h3>
+  <pre>{{ owner | json }}</pre>
+
+  <br><br> -->
+
+  <button [disabled]="createPropertyForm.invalid">Create Property</button>
+</form>
+
+<br><br>
+
+<hr>
+
+<button (click)="goHome()">Go home</button>
+
+<button (click)="goRepairs()"> Go Repairs </button>

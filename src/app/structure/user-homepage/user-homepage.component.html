@@ -1,0 +1,41 @@
+<div class="container-fluid">
+  <h1>Welcome {{ user.name }}!</h1>
+  <br><br>
+  <h3>My Properties</h3>
+  <br>
+  <div class="row">
+    @for (property of properties; track property){
+    <div class="col-md-2">
+
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-text">{{ property.address }}</h5>
+          <p class="card-text">{{ property.propertyType }}</p>
+          <p class="card-text">{{ property.yearOfConstruction }}</p>
+        </div>
+      </div>
+
+    </div>
+    }
+  </div>
+
+  <br>
+  <h3>My Pending Repairs</h3>
+  <br>
+  <div class="row">
+    @for (repair of pendingRepairs; track repair){
+    <div class="col-md-2">
+      <div class="card">
+        <div class="card-body">
+          <p class="card-text">{{ repair.property.address }}</p>
+          <p class="card-text">{{ repair.property.propertyType }}</p>
+          <p class="card-text">{{ repair.repairType }}</p>
+          <p class="card-text">{{ repair.status }}</p>
+        </div>
+      </div>
+    </div>
+    }
+  </div>
+  <br>
+  <h3>My Repairs in Progress:</h3>
+</div>

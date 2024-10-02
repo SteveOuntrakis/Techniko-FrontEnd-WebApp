@@ -1,0 +1,46 @@
+<h2>Update Your Profile</h2>
+
+<form [formGroup]="updateUserForm" (ngSubmit)="updateUser()">
+
+  <label for="username">Username:</label>
+  <input type="text" id="username" formControlName="username" placeholder="{{user?.username}}">
+  @if (username?.hasError('required') && username?.touched) {<div>Username Required</div>}
+  <br><br>
+
+  <label for="name">First Name:</label>
+  <input type="text" id="name" formControlName="name" placeholder="{{user?.name}}">
+  @if (name?.hasError('required') && name?.touched) {<div>Name Required</div>}
+  <br><br>
+
+  <label for="surname">Surname:</label>
+  <input type="text" id="surname" formControlName="surname" placeholder="{{user?.surname}}">
+  @if (surname?.hasError('required') && surname?.touched) {<div>Surname Required</div>}
+  <br><br>
+
+  <label for="address">Address:</label>
+  <input type="text" id="address" formControlName="address" placeholder="{{user?.address}}">
+  @if (address?.hasError('required') && address?.touched) {<div>Address Required</div>}
+  <br><br>
+
+  <label for="phoneNumber">Phone Number:</label>
+  <input type="text" id="phoneNumber" formControlName="phoneNumber" placeholder="{{user?.phoneNumber}}">
+  @if (phoneNumber?.hasError('required') && phoneNumber?.touched) {<div>Phone Number Required</div>}
+  <br><br>
+
+  <label for="vatNumber">VAT Number:</label>
+  <input type="text" id="vatNumber" formControlName="vatNumber" placeholder="{{user?.vatNumber}}">
+  @if (vatNumber?.hasError('required') && vatNumber?.touched) {<div>VAT Number Required</div>}
+  <br><br>
+
+  <label for="email">Email:</label>
+  <input type="email" id="email" formControlName="email" placeholder="{{user?.email}}">
+  @if (email?.hasError('required') && email?.touched) {<div>Email Required</div>}
+  <br><br>
+
+  <label for="password">Password:</label>
+  <input type="password" id="password" formControlName="password" placeholder="">
+  @if (password?.hasError('required') && password?.touched) {<div>Password Required</div>}
+  <br><br>
+
+  <button [disabled]="updateUserForm.invalid">Save</button>
+</form>

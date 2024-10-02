@@ -1,0 +1,27 @@
+<h2>Request new Repair for your Property:</h2>
+<br>
+<form [formGroup]="createRepairForm" (ngSubmit)="CreateRepair()">
+  <input type="text" formControlName="shortDescription" placeholder="Short Description">
+  @if (shortDescription?.hasError('required') && shortDescription?.touched) {<div>Short Description Required</div>}
+  
+  <br><br>
+
+  <textarea formControlName="description" placeholder="Description"></textarea>
+  
+  <br><br>
+  
+  <label for="repairType">Repair Type</label>
+  <select formControlName="repairType">
+    <option [value]="0">PAINTING</option>
+    <option [value]="1">INSULATION</option>
+    <option [value]="2">FRAMES</option>
+    <option [value]="3">PLUMBING</option>
+    <option [value]="3">ELECTRICAL_WORK</option>
+  </select>
+  
+  <br><br>
+
+  <button [disabled]="createRepairForm.invalid">Create Property Repair</button>
+</form>
+
+<br><br>

@@ -1,0 +1,106 @@
+<nav class="navbar navbar-expand-lg bg-secondary">
+  <div class="container-fluid">
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" [routerLink]="['UserHome']" routerLinkActive="active">Home</a>
+        </li>     
+       
+
+        <!-- Properties -->
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="propertyDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Properties
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="propertyDropdown">
+            <li>
+              <a class="dropdown-item" [routerLink]="['Property',1]" routerLinkActive="active">Create Property</a>
+            </li>
+            <li>
+              <a class="dropdown-item" [routerLink]="['property/search']">Search Property</a>
+            </li>
+            <li>
+              <a class="dropdown-item" [routerLink]="['property/update']">Update Property</a>
+            </li>
+            <li>
+              <a class="dropdown-item" [routerLink]="['property/delete']">Delete Property</a>
+            </li>
+          </ul>
+        </li>
+
+        <!-- Property Repairs -->
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="propertyRepairDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Property Repairs
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="propertyRepairDropdown">
+            <li>
+              <a class="dropdown-item" [routerLink]="['PropertyRepairs']" routerLinkActive="active">Create Repair</a>
+            </li>
+            <li>
+              <a class="dropdown-item" [routerLink]="['propertyRepair/search']">Search Repair</a>
+            </li>
+            <li>
+              <a class="dropdown-item" [routerLink]="['propertyRepair/update']">Update Repair</a>
+            </li>
+            <li>
+              <a class="dropdown-item" [routerLink]="['propertyRepair/delete']">Delete Repair</a>
+            </li>
+          </ul>
+        </li>
+
+        <!-- User -->
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Settings
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="userDropdown">          
+            <li>
+              <a class="dropdown-item" [routerLink]="['user/update']">Update</a>
+            </li>
+            <li>
+              <a class="dropdown-item" [routerLink]="['user/delete']">Delete</a>
+            </li>
+          </ul>
+        </li>
+
+        <!-- Admin -->
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="adminDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Admin
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="adminDropdown">
+            <li>
+              <a class="dropdown-item" [routerLink]="['Admin']" routerLinkActive="active">Create Admin</a>      
+            </li>           
+            <li>
+              <a class="dropdown-item" [routerLink]="['admin/search']">Search Admin</a>
+            </li>
+            <li>
+              <a class="dropdown-item" [routerLink]="['admin/update']">Update Admin</a>
+            </li>
+            <li>
+              <a class="dropdown-item" [routerLink]="['admin/delete']">Delete Admin</a>
+            </li>
+            <hr>
+            <li>
+              <a class="dropdown-item" [routerLink]="['User']" routerLinkActive="active">Create User</a>
+            </li>
+            <li>
+              <a class="dropdown-item" [routerLink]="['user/search']">Search User</a>
+            </li>
+          </ul>
+        </li>
+
+      </ul>
+    </div>
+  </div>
+</nav>
+
+
+
+<router-outlet></router-outlet>
+
