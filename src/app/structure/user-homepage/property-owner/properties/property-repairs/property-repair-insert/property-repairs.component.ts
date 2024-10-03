@@ -1,9 +1,10 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-import { PropertyRepairService } from '../../../../../services/property-repair.service';
-import { PropertyService } from '../../../../../services/property.service';
+import { PropertyRepairService } from '../../../../../../services/property-repair.service';
+import { PropertyService } from '../../../../../../services/property.service';
 import { JsonPipe } from '@angular/common';
-import { Property } from '../../../../../models/property';
+import { Property } from '../../../../../../models/property';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-property-repairs',
@@ -18,6 +19,7 @@ export class PropertyRepairsComponent implements OnInit {
   private repairService = inject(PropertyRepairService);
   private propertyService = inject(PropertyService);
   viewMessage: string = '';  
+  router =inject(Router);
 
   fb = inject(FormBuilder);
 
@@ -47,6 +49,13 @@ export class PropertyRepairsComponent implements OnInit {
       this.property = data;
       this.createRepairForm.patchValue({ property: { id: this.property.id } });
     });
+  }
+  goHome(){
+    this.router.navigate(['UserHome']);
+  }
+  
+  goProperty(){
+    this.router.navigate(['Property/:id']);
   }
 
   CreateRepair():void {

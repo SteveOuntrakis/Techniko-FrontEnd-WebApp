@@ -1,13 +1,12 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { AdminService } from '../../../services/admin.service';
-import { JsonPipe } from '@angular/common';
 import { Admin } from '../../../models/admin';
 
 @Component({
   selector: 'app-admin-view',
   standalone: true,
-  imports: [ReactiveFormsModule,JsonPipe],
+  imports: [ReactiveFormsModule],
   templateUrl: './admin-view.component.html',
   styleUrl: './admin-view.component.css'
 })

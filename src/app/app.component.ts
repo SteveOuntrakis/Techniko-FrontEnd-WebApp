@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
-import { UserHomepageComponent } from "./structure/user-homepage/user-homepage.component";
+import { UserHomepageComponent } from "./structure/user-homepage/user-home/user-homepage.component";
 
 
 @Component({

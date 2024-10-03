@@ -1,8 +1,8 @@
 import { Component, inject, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { PropertyService } from '../../../../services/property.service';
-import { PropertyOwnerService } from '../../../../services/property-owner.service';
+import { PropertyService } from '../../../../../services/property.service';
+import { PropertyOwnerService } from '../../../../../services/property-owner.service';
 import { JsonPipe } from '@angular/common';
 
 @Component({

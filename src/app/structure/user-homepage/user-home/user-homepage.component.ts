@@ -1,13 +1,13 @@
 import { Component, inject, OnInit } from '@angular/core';
-import { PropertyOwnerService } from '../../services/property-owner.service';
-import { PropertyOwnerComponent } from "./property-owner/property-owner.component";
-import { AdminComponent } from "../admin-homepage/admin/admin.component";
+import { PropertyOwnerService } from '../../../services/property-owner.service';
+import { PropertyOwnerComponent } from "../property-owner/property-owner-insert/property-owner.component";
+import { AdminComponent } from "../../admin-homepage/admin/admin.component";
 import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
-import { PropertyService } from '../../services/property.service';
-import { PropertyRepairService } from '../../services/property-repair.service';
-import { PropertyOwner } from '../../models/propertyOwner';
-import { Property } from '../../models/property';
-import { PropertyRepair } from '../../models/propertyRepair';
+import { PropertyService } from '../../../services/property.service';
+import { PropertyRepairService } from '../../../services/property-repair.service';
+import { PropertyOwner } from '../../../models/propertyOwner';
+import { Property } from '../../../models/property';
+import { PropertyRepair } from '../../../models/propertyRepair';
 import { SlicePipe } from '@angular/common';
 
 @Component({

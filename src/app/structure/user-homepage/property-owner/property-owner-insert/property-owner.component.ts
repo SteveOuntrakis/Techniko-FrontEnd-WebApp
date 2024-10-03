@@ -1,8 +1,8 @@
 import { Component, inject, OnInit } from '@angular/core';
-import { PropertyOwnerService } from '../../../services/property-owner.service';
+import { PropertyOwnerService } from '../../../../services/property-owner.service';
 import { JsonPipe } from '@angular/common';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-import { PropertyOwner } from '../../../models/propertyOwner';
+import { PropertyOwner } from '../../../../models/propertyOwner';
 
 @Component({
   selector: 'app-property-owner',

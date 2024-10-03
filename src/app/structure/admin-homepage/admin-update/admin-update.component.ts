@@ -1,13 +1,12 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { AdminService } from '../../../services/admin.service';
-import { JsonPipe } from '@angular/common';
 import { Admin } from '../../../models/admin';
 
 @Component({
   selector: 'app-admin-update',
   standalone: true,
-  imports: [ReactiveFormsModule,JsonPipe],
+  imports: [ReactiveFormsModule],
   templateUrl: './admin-update.component.html',
   styleUrl: './admin-update.component.css'
 })

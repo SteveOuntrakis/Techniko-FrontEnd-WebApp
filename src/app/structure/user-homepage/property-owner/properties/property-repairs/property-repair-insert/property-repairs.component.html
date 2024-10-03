@@ -1,6 +1,6 @@
 <div class="container-fluid">
   <div class="col-md-6">
-    <h2>Request New Repair for Your Property in {{property.address}}</h2>
+    <h2>Request New Repair for Your Property in {{property.address}}:</h2>
   </div>
   <br>
 
@@ -41,6 +41,12 @@
       }
     </form>
   </div>
-</div>
+  <br><br>
 
-<br><br>
+  <hr>
+
+  <div class="d-grid gap-2 d-md-flex justify-content-md-start">
+    <button class="btn btn-primary" (click)="goHome()">Go Home</button>
+    <button class="btn btn-secondary" (click)="goProperty()">Go to Properties</button>
+  </div>
+</div>
