@@ -16,7 +16,7 @@ export class PropertyOwnerComponent implements OnInit{
   private service = inject(PropertyOwnerService);
 
   users : any;
-  answer: any;
+  viewMessage: string = '';  
 
   fb = inject(FormBuilder);
 
@@ -34,7 +34,6 @@ export class PropertyOwnerComponent implements OnInit{
     });
   }
 
-  //,Validators.pattern("^[a-zA-Z0-9@$#!%&]+$")
   get username() {
     return this.createOwnerForm.get('username');
   }
@@ -69,7 +68,7 @@ export class PropertyOwnerComponent implements OnInit{
 
   CreateOwner(){
       this.service.postPropertyOwner(this.createOwnerForm.value).subscribe({
-        next: response => this.answer=response,
+        next:()=>this.viewMessage = `The Owner has been successfully created.`,
         error: err => console.error('An error occured ${err}'),
         complete: () => console.log('Data fetched.')
       });

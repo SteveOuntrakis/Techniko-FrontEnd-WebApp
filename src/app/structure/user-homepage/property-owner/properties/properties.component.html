@@ -31,8 +31,13 @@
 
   <br><br> -->
 
-  <button [disabled]="createPropertyForm.invalid">Create Property</button>
+  <button type="submit" class="btn btn-success" [disabled]="createPropertyForm.invalid">Create Property</button>
 </form>
+
+@if (viewMessage) {<div class="alert alert-success mt-4">
+  {{ viewMessage }}
+</div>
+}
 
 <br><br>
 

@@ -1,0 +1,38 @@
+<div class="container-fluid">
+    <br>
+
+    <h4>Your Properties</h4>
+    <br>
+    <div class="row">
+        @for(property of properties; track property){ 
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Property ID: {{ property.id }}</h5>
+                        <p class="card-text">Address: {{ property.address }}</p>
+                        <p class="card-text">Property Type: {{ property.propertyType }}</p>
+                        <p class="card-text">Year of Construction: {{ property.yearOfConstruction }}</p>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+    <br><br>
+
+    <h4>view a Property</h4>
+    <br>
+    <form [formGroup]="viewPropertyForm" (ngSubmit)="viewProperty()">
+        <div class="form-group">
+            <label for="propertyId">Enter Property ID to delete:</label>
+            <input type="number" id="propertyId" formControlName="propertyId" class="form-control"
+                placeholder="Enter Property ID">
+            <br>
+            <button type="submit" class="btn btn-danger" [disabled]="viewPropertyForm.invalid">delete Property</button>
+        </div>
+    </form>
+
+    @if (viewMessage) {<div class="alert alert-success mt-4">
+        {{ viewMessage }}
+    </div>
+    }
+</div>

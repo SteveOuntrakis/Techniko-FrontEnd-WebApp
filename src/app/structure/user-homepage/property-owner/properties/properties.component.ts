@@ -14,10 +14,7 @@ import { JsonPipe } from '@angular/common';
 })
 export class PropertiesComponent implements OnInit{
 
-  @Input() id!:string;
-  @Input() search!: string;
-  @Input() year!: string;
-
+  viewMessage :string ='';  
   router =inject(Router);
   goHome(){
     this.router.navigate(['UserHome']);
@@ -69,7 +66,9 @@ export class PropertiesComponent implements OnInit{
   CreateProperty() {
     if (this.createPropertyForm.valid) {
       this.propertyService.postProperty(this.createPropertyForm.value).subscribe({
-        next: response => console.log('Property created:', response),
+        next: () => {
+          this.viewMessage = `The Property has been successfully created.`;;
+        },
         error: err => console.error('Error:', err),
         complete: () => console.log('Property creation complete.')
       });

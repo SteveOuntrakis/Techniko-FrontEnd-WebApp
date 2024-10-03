@@ -9,17 +9,31 @@ import { PropertyRepairsComponent } from './structure/user-homepage/property-own
 import { UserUpdateComponent } from './structure/user-homepage/user-update/user-update.component';
 import { AdminUpdateComponent } from './structure/admin-homepage/admin/admin-update/admin-update.component';
 import { UserSearchComponent } from './structure/user-homepage/user-search/user-search.component';
+import { PropertyUpdateComponent } from './structure/user-homepage/property-owner/properties/property-update/property-update.component';
+import { PropertyviewComponent } from './structure/user-homepage/property-owner/properties/property-view/property-view.component';
+import { AdminViewComponent } from './structure/admin-homepage/admin/admin-view/admin-view.component';
+import { PropertyRepairsViewComponent } from './structure/user-homepage/property-owner/properties/property-repairs/property-repairs-view/property-repairs-view.component';
 
 export const routes: Routes = [
     {path:'UserHome',component:UserHomepageComponent},
     {path:'AdminHome',component:AdminHomepageComponent},
+  
+
     {path: 'User',component:PropertyOwnerComponent},
     {path: 'user/update', component: UserUpdateComponent },
+    {path: 'user/search', component: UserSearchComponent },
+
     {path: 'Admin',component:AdminComponent},
     {path: 'admin/update', component: AdminUpdateComponent },
-    {path: 'user/search', component: UserSearchComponent },
+    {path: 'admin/view',component:AdminViewComponent},
+  
     {path: 'Property/:id',component:PropertiesComponent},
+    { path: 'PropertyUpdate/:id', component: PropertyUpdateComponent },
+    {path: 'property/view', component: PropertyviewComponent}, 
+
     {path: 'PropertyRepairs',component:PropertyRepairsComponent},
+    {path: 'propertyRepairs/view',component:PropertyRepairsViewComponent},
+
     {path: '',redirectTo:'UserHome', pathMatch: 'full'},
 
     {path: '**',component:FileNotFoundComponent}

@@ -16,6 +16,7 @@ export class PropertyRepairsComponent implements OnInit {
   property: any; 
   private repairService = inject(PropertyRepairService);
   private propertyService = inject(PropertyService);
+  viewMessage: string = '';  
 
   fb = inject(FormBuilder);
 
@@ -41,7 +42,7 @@ export class PropertyRepairsComponent implements OnInit {
   }
 
   loadProperty() {
-    this.propertyService.getPropertyById().subscribe(data => {
+    this.propertyService.getPropertyById(3).subscribe(data => {
       this.property = data;
       this.createRepairForm.patchValue({ property: { id: this.property.id } });
     });
@@ -62,7 +63,7 @@ export class PropertyRepairsComponent implements OnInit {
         proposedEndDate: null
       };
       this.repairService.postPropertyRepair(repairData).subscribe({
-        next: response => console.log('Property Repair created:', response),
+        next: () => this.viewMessage = `Your Request has been successfully submitted.`,
         error: err => console.error('Error:', err),
         complete: () => console.log('Property Repair creation complete.')
       });

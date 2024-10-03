@@ -1,1 +1,27 @@
-<pre>{{user|json}}</pre>
+
+<div class="container-fluid">
+    <br>
+
+    <h4>All Users</h4>
+
+    <div class="col">
+        @for(user of users; track user){ 
+            <br>
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">ID: {{ user.id }}</h5>
+                        <p class="card-text">VatNumber: {{ user.vatNumber }}</p>
+                        <p class="card-text">Name: {{ user.name }}</p>
+                        <p class="card-text">Surname: {{ user.surname }}</p>
+                        <p class="card-text">Address: {{ user.address }}</p>
+                        <p class="card-text">PhoneNumber: {{ user.phoneNumber }}</p>
+                        <p class="card-text">Email: {{ user.email }}</p>
+                        <p class="card-text">Username: {{ user.username }}</p>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+    <br><br>
+</div>

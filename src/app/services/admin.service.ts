@@ -10,13 +10,8 @@ export class AdminService {
   http = inject(HttpClient);
 
 
-  getAllPropertyOwners(){
+  getAllAdmins(){
     const url ='http://localhost:8080/Techniko/admin';
-    return this.http.get(url);
-  }
-
-  getPropertyOwnerById(){
-    const url='http://localhost:8080/Techniko/admin/1';
     return this.http.get(url);
   }
 
@@ -30,8 +25,8 @@ export class AdminService {
     
   }
 
-  getAdminById() {
-    const url = `http://localhost:8080/Techniko/admin/1`;
+  getAdminById(id:any) {
+    const url = `http://localhost:8080/Techniko/admin/${id}`;
     return this.http.get(url);
   }
 
@@ -40,6 +35,11 @@ export class AdminService {
     .set('Content-Type', 'application/json');
     const url = `http://localhost:8080/Techniko/admin/${id}`;
     return this.http.post(url, JSON.stringify(admin), {headers: header});
+  }
+
+  deleteAdminById(id: any) {
+    const url = `http://localhost:8080/Techniko/admin/${id}`;
+    return this.http.delete(url);
   }
 
 }

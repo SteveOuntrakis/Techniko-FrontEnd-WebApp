@@ -20,7 +20,13 @@
     <!-- @if (password?.hasError('pattern') && password?.touched) {<div>Password must have only letters </div>} -->
 
     <br><br>
-    <button [disabled]="createAdminForm.invalid">Create Admin</button>
+    <button type="submit" class="btn btn-success" [disabled]="createAdminForm.invalid">Create Admin</button>
+
+    @if (viewMessage) {
+    <div class="alert alert-success mt-4">
+        {{ viewMessage }}
+    </div>
+    }
 </form>
 
 <br><br>

@@ -15,7 +15,7 @@ export class AdminUpdateComponent implements OnInit {
   updateAdminForm!: FormGroup;
   private service = inject(AdminService);
   admin : any;
-  answer: any;
+  viewMessage: string= '';
 
   fb = inject(FormBuilder);
 
@@ -30,7 +30,7 @@ export class AdminUpdateComponent implements OnInit {
   }
 
   loadAdminData() {
-    this.service.getAdminById().subscribe(data => {
+    this.service.getAdminById(1).subscribe(data => {
       this.admin = data;
       this.updateAdminForm.patchValue({
         id: this.admin.id,
@@ -43,7 +43,7 @@ export class AdminUpdateComponent implements OnInit {
 
   updateAdmin() {
       this.service.updateAdmin( 1,this.updateAdminForm.value).subscribe({
-        next: response => this.answer=response,
+        next: () => this.viewMessage='Succesfully updated Admin',
         error: err => console.error(`An error occured ${err}`),
         complete: () => console.log('Data fetched.')
       });

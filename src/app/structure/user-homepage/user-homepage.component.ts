@@ -37,38 +37,14 @@ export class UserHomepageComponent implements OnInit{
   }
 
   loadProperties() {
-    this.propertyService.getPropertiesByUserId().subscribe(data => {
-      this.properties = data;
+    this.propertyService.getPropertiesByUserId(1).subscribe(data => {
+      this.properties = data.filter((property: any) => !property.deleted);
     });
   }
 
   loadPendingRepairs() {
-    this.repairService.findPendingRepairsByProperty().subscribe(data => {
-      this.pendingRepairs = data;
+    this.repairService.findPendingRepairsByProperty(1).subscribe(data => {
+      this.pendingRepairs = data.filter((repair: any) => !repair.deleted);;
     });
   }
-  // private service = inject(PropertyOwnerService);
-
-  // all_property_owners: any;
-  // property_owner :any;
-  // property_owner_byUsername :any;
-
-
-  // ngOnInit(): void {
-
-  //   this.service.getAllPropertyOwners().subscribe({
-  //     next : response => this.all_property_owners= response,
-  //     error: err => console.error(`this error occured : ${err}`)
-  //   })
-
-  //   this.service.getPropertyOwnerById().subscribe({
-  //     next: response=> this.property_owner = response,
-  //     error : err => console.error(`this error occured : ${err}`)      
-  //   })
-
-  //   this.service.getPropertyOwnerByUsername().subscribe({
-  //     next: response=> this.property_owner_byUsername=response,
-  //     error : err => console.error(`this error occured : ${err}`) 
-  //   })
-  // }
 }

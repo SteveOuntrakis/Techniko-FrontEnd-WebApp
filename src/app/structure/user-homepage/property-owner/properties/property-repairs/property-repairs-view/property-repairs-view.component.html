@@ -1,0 +1,38 @@
+<div class="container-fluid">
+    <br>
+
+    <h4>Your Repairs</h4>
+    <br>
+    <div class="row">
+        @for(repair of propertyRepairs; track repair){ 
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">ID: {{ repair.id }}</h5>
+                        <p class="card-text">Type: {{ repair.repairType }}</p>
+                        <p class="card-text">Proposed_Cost: {{ repair.proposedCost }}</p>
+                        <p class="card-text">Description: {{ repair.shortDescription }}</p>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+    <br><br>
+
+    <h4>Delete a Repair Request</h4>
+    <br>
+    <form [formGroup]="viewPropertyRepairForm" (ngSubmit)="viewPropertyRepair()">
+        <div class="form-group">
+            <label for="propertyRepairId">Enter Property Repair ID to delete:</label>
+            <input type="number" id="propertyRepairId" formControlName="propertyRepairId" class="form-control"
+                placeholder="Enter Property Repair ID">
+            <br>
+            <button type="submit" class="btn btn-danger" [disabled]="viewPropertyRepairForm.invalid">delete Property Repair</button>
+        </div>
+    </form>
+
+    @if (viewMessage) {<div class="alert alert-success mt-4">
+        {{ viewMessage }}
+    </div>
+    }
+</div>

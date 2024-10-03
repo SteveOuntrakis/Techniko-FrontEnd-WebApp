@@ -16,7 +16,7 @@ export class UserUpdateComponent implements OnInit {
   private service = inject(PropertyOwnerService);
 
   user : any;
-  answer: any;
+  viewMessage:string='';
 
   fb = inject(FormBuilder);
 
@@ -33,7 +33,6 @@ export class UserUpdateComponent implements OnInit {
       password: ['', [Validators.required, Validators.minLength(4)]]
     });
 
-    // Load current user data
     this.loadUserData();
   }
 
@@ -56,10 +55,11 @@ export class UserUpdateComponent implements OnInit {
 
   updateUser() {
       this.service.updatePropertyOwner(1,this.updateUserForm.value).subscribe({
-        next: response => this.answer=response,
+        next: () => this.viewMessage='Succesfully updated your Profile',
         error: err => console.error('An error occured ${err}'),
         complete: () => console.log('Data fetched.')
-      });
+      });   
+
   }
 
   get username() {

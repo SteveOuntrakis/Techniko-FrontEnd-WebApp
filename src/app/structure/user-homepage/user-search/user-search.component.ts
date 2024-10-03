@@ -12,7 +12,7 @@ import { JsonPipe } from '@angular/common';
 })
 export class UserSearchComponent implements OnInit{
   user: any = {};  // Replace with proper User model
-  properties: any[] = [];  // Replace with Property model
+  users: any[] = [];  // Replace with Property model
   pendingRepairs: any[] = [];  // Replace with Repair model
 
   constructor(
@@ -24,8 +24,8 @@ export class UserSearchComponent implements OnInit{
   }
 
   loadUserData() {
-    this.ownerService.getPropertyOwnerById(1).subscribe(data => {
-      this.user = data;
+    this.ownerService.getAllPropertyOwners().subscribe((data:any) => {
+      this.users = data;
     });
   }
 }

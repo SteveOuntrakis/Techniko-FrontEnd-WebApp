@@ -1,7 +1,7 @@
 <h2>Update Admin</h2>
 
 <form [formGroup]="updateAdminForm" (ngSubmit)="updateAdmin()">
-    <input type="hidden" formControlName="id">
+  <input type="hidden" formControlName="id">
 
   <label for="username">Username:</label>
   <input type="text" id="username" formControlName="username" placeholder="{{admin?.username}}">
@@ -20,5 +20,10 @@
   @if (password?.hasError('minlength') && password?.touched) {<div>Password must be at least 6 characters long</div>}
   <br><br>
 
-  <button [disabled]="updateAdminForm.invalid">Save Changes</button>
+  <button type="submit" class="btn btn-warning" [disabled]="updateAdminForm.invalid">Save Changes</button>
+  @if (viewMessage) {
+  <div class="alert alert-success mt-4">
+    {{ viewMessage }}
+  </div>
+  }
 </form>

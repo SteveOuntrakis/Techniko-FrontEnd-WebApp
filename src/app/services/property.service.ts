@@ -15,13 +15,13 @@ export class PropertyService {
     return this.http.get(url);
   }
 
-  getPropertyById() {
-    const url = 'http://localhost:8080/Techniko/property/1';
+  getPropertyById(id: any) {
+    const url = `http://localhost:8080/Techniko/property/${id}`;
     return this.http.get(url);
   }
 
-  getPropertiesByUserId(): Observable<Property[]> {
-    const url = 'http://localhost:8080/Techniko/property/properties/1';
+  getPropertiesByUserId(id:any): Observable<Property[]> {
+    const url = `http://localhost:8080/Techniko/property/properties/${id}`;
     return this.http.get<Property[]>(`${url}`);
   }
 
@@ -34,5 +34,16 @@ export class PropertyService {
     return this.http.post(url, JSON.stringify(repair), { headers: header });
   }
 
+  updateProperty(id: any, updatedProperty: any) {
+    const url = `http://localhost:8080/Techniko/property/${id}`;
+    const headers = new HttpHeaders().set('Content-Type', 'application/json');
+  
+    return this.http.post(url, JSON.stringify(updatedProperty), { headers });
+  }
+
+  deletePropertyById(id: any) {
+    const url = `http://localhost:8080/Techniko/property/${id}`;
+    return this.http.delete(url);
+  }
 
 }

@@ -1,15 +1,15 @@
-<h2>Request new Repair for your Property:</h2>
+<h2>Request new Repair for your Property in {{property.address}}</h2>
 <br>
 <form [formGroup]="createRepairForm" (ngSubmit)="CreateRepair()">
   <input type="text" formControlName="shortDescription" placeholder="Short Description">
   @if (shortDescription?.hasError('required') && shortDescription?.touched) {<div>Short Description Required</div>}
-  
+
   <br><br>
 
   <textarea formControlName="description" placeholder="Description"></textarea>
-  
+
   <br><br>
-  
+
   <label for="repairType">Repair Type</label>
   <select formControlName="repairType">
     <option [value]="0">PAINTING</option>
@@ -18,10 +18,16 @@
     <option [value]="3">PLUMBING</option>
     <option [value]="3">ELECTRICAL_WORK</option>
   </select>
-  
+
   <br><br>
 
-  <button [disabled]="createRepairForm.invalid">Create Property Repair</button>
+  <button type="submit" class="btn btn-success" [disabled]="createRepairForm.invalid">Create Property Repair</button>
+
+  @if (viewMessage) {
+  <div class="alert alert-success mt-4">
+    {{ viewMessage }}
+  </div>
+  }
 </form>
 
 <br><br>

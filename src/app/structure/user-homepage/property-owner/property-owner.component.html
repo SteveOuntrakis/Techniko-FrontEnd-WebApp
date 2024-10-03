@@ -44,7 +44,12 @@
     @if (password?.hasError('minlength') && password?.touched) {<div >Password must have at least 4 characters</div>}
     <br><br>
 
-    <button [disabled]="createOwnerForm.invalid">Create Property Owner</button>
+    <button type="submit" class="btn btn-success" [disabled]="createOwnerForm.invalid" >Create Property Owner</button>
+
+    @if (viewMessage) {<div class="alert alert-success mt-4">
+        {{ viewMessage }}
+    </div>
+    }
 </form>
 
 <br><br>

@@ -20,13 +20,10 @@
               <a class="dropdown-item" [routerLink]="['Property',1]" routerLinkActive="active">Create Property</a>
             </li>
             <li>
-              <a class="dropdown-item" [routerLink]="['property/search']">Search Property</a>
+              <a class="dropdown-item" [routerLink]="['PropertyUpdate', 1]">Update Property</a>
             </li>
             <li>
-              <a class="dropdown-item" [routerLink]="['property/update']">Update Property</a>
-            </li>
-            <li>
-              <a class="dropdown-item" [routerLink]="['property/delete']">Delete Property</a>
+              <a class="dropdown-item" [routerLink]="['property/view']">View Properties</a>
             </li>
           </ul>
         </li>
@@ -41,13 +38,7 @@
               <a class="dropdown-item" [routerLink]="['PropertyRepairs']" routerLinkActive="active">Create Repair</a>
             </li>
             <li>
-              <a class="dropdown-item" [routerLink]="['propertyRepair/search']">Search Repair</a>
-            </li>
-            <li>
-              <a class="dropdown-item" [routerLink]="['propertyRepair/update']">Update Repair</a>
-            </li>
-            <li>
-              <a class="dropdown-item" [routerLink]="['propertyRepair/delete']">Delete Repair</a>
+              <a class="dropdown-item" [routerLink]="['propertyRepairs/view']">View Repairs</a>
             </li>
           </ul>
         </li>
@@ -62,7 +53,7 @@
               <a class="dropdown-item" [routerLink]="['user/update']">Update</a>
             </li>
             <li>
-              <a class="dropdown-item" [routerLink]="['user/delete']">Delete</a>
+              <a class="dropdown-item" [routerLink]="['user/view']">View</a>
             </li>
           </ul>
         </li>
@@ -75,22 +66,19 @@
           <ul class="dropdown-menu" aria-labelledby="adminDropdown">
             <li>
               <a class="dropdown-item" [routerLink]="['Admin']" routerLinkActive="active">Create Admin</a>      
-            </li>           
-            <li>
-              <a class="dropdown-item" [routerLink]="['admin/search']">Search Admin</a>
-            </li>
+            </li>  
             <li>
               <a class="dropdown-item" [routerLink]="['admin/update']">Update Admin</a>
             </li>
             <li>
-              <a class="dropdown-item" [routerLink]="['admin/delete']">Delete Admin</a>
+              <a class="dropdown-item" [routerLink]="['admin/view']">View Admins</a>
             </li>
             <hr>
             <li>
               <a class="dropdown-item" [routerLink]="['User']" routerLinkActive="active">Create User</a>
             </li>
             <li>
-              <a class="dropdown-item" [routerLink]="['user/search']">Search User</a>
+              <a class="dropdown-item" [routerLink]="['user/search']">View Users</a>
             </li>
           </ul>
         </li>

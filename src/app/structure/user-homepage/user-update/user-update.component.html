@@ -42,5 +42,12 @@
   @if (password?.hasError('required') && password?.touched) {<div>Password Required</div>}
   <br><br>
 
-  <button [disabled]="updateUserForm.invalid">Save</button>
+
+  <button type="submit" class="btn btn-warning" [disabled]="updateUserForm.invalid">Save</button>
+
+  @if (viewMessage) {
+  <div class="alert alert-success mt-4">
+    {{ viewMessage }}
+  </div>
+  }
 </form>

@@ -14,7 +14,7 @@ export class AdminComponent implements OnInit{
   private service = inject(AdminService);
 
   users : any;
-  answer: any;
+  viewMessage: string='';
 
   fb = inject(FormBuilder);
 
@@ -42,7 +42,7 @@ export class AdminComponent implements OnInit{
 
   CreateAdmin(){
       this.service.postAdmin(this.createAdminForm.value).subscribe({
-        next: response => this.answer=response,
+        next: () => this.viewMessage = `Admin has been successfully created.`,
         error: err => console.error('An error occured ${err}'),
         complete: () => console.log('Data fetched.')
       });

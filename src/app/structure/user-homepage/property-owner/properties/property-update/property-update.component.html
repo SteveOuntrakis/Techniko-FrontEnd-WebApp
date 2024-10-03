@@ -1,0 +1,46 @@
+<h3>Update the {{property.propertyType}} in {{property.address}} </h3>
+
+
+<form [formGroup]="updatePropertyForm" (ngSubmit)="updateProperty()">
+  <br>
+  <label for="address">Address: </label>
+  <input type="text" formControlName="address" id="address" placeholder="{{property?.address}}">
+  @if (address?.hasError('required') && address?.touched) {
+  <div class="error">Address is required</div>
+  }
+  <br><br>
+  <label for="yearOfConstruction">Year of Construction</label>
+  <input type="number" formControlName="yearOfConstruction" id="yearOfConstruction"
+    placeholder="{{property?.yearOfConstruction}}">
+  @if (yearOfConstruction?.hasError('required') && yearOfConstruction?.touched) {
+  <div class="error">Year of construction is required</div>
+  }
+  @if (yearOfConstruction?.hasError('min') && yearOfConstruction?.touched) {
+  <div class="error">Year must be after 1900</div>
+  }
+  @if (yearOfConstruction?.hasError('max') && yearOfConstruction?.touched) {
+  <div class="error">Year cannot be in the future</div>
+  }
+  <br><br>
+  <div class="col-1">
+    <div class="input-group">
+      <select formControlName="propertyType">
+        <option [value]="0">House</option>
+        <option [value]="1">Apartment</option>
+        <option [value]="2">Detached_House</option>
+        <option [value]="3">Maisonette</option>
+      </select>
+    </div>
+  </div>
+  @if (propertyType?.hasError('required') && propertyType?.touched) {
+  <div class="error">Property type is required</div>
+  }
+  <br><br>
+  <button type="submit" class="btn btn-warning" [disabled]="updatePropertyForm.invalid">Save</button>
+
+  @if (viewMessage) {
+  <div class="alert alert-success mt-4">
+    {{ viewMessage }}
+  </div>
+  }
+</form>

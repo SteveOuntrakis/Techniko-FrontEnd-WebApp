@@ -15,8 +15,8 @@ export class PropertyRepairService {
     return this.http.get(url);
   }
 
-  getPropertyRepairsById() {
-    const url = 'http://localhost:8080/Techniko/propertyRepair/1';
+  getPropertyRepairsById(id : any) {
+    const url = `http://localhost:8080/Techniko/propertyRepair/${id}`;
     return this.http.get(url);
   }
 
@@ -34,13 +34,18 @@ export class PropertyRepairService {
     return this.http.get(url);
   }
   
-  findRepairsByProperty() {
-    const url = 'http://localhost:8080/Techniko/propertyRepair/property/1';
+  findRepairsByProperty(id : any) {
+    const url = `http://localhost:8080/Techniko/propertyRepair/property/${id}`;
     return this.http.get(url);
   }
 
-   findPendingRepairsByProperty() : Observable<PropertyRepair[]> {
-    const url = 'http://localhost:8080/Techniko/propertyRepair/pending/1';
+   findPendingRepairsByProperty(id : any) : Observable<PropertyRepair[]> {
+    const url = `http://localhost:8080/Techniko/propertyRepair/pending/${id}`;
     return this.http.get<PropertyRepair[]>(`${url}`);
+  }
+
+  deletePropertyRepairById(id: any) {
+    const url = `http://localhost:8080/Techniko/propertyRepair/${id}`;
+    return this.http.delete(url);
   }
 }
