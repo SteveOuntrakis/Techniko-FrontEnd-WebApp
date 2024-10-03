@@ -2,6 +2,7 @@ import { Component, inject, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { PropertyOwnerService } from '../../../services/property-owner.service';
 import { JsonPipe } from '@angular/common';
+import { PropertyOwner } from '../../../models/propertyOwner';
 
 @Component({
   selector: 'app-user-update',
@@ -15,7 +16,7 @@ export class UserUpdateComponent implements OnInit {
   updateUserForm!: FormGroup;
   private service = inject(PropertyOwnerService);
 
-  user : any;
+  user!: PropertyOwner;
   viewMessage:string='';
 
   fb = inject(FormBuilder);
@@ -56,7 +57,7 @@ export class UserUpdateComponent implements OnInit {
   updateUser() {
       this.service.updatePropertyOwner(1,this.updateUserForm.value).subscribe({
         next: () => this.viewMessage='Succesfully updated your Profile',
-        error: err => console.error('An error occured ${err}'),
+        error: err => console.error(`An error occured ${err}`),
         complete: () => console.log('Data fetched.')
       });   
 

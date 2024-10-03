@@ -1,0 +1,53 @@
+<div class="container-fluid">
+  <div class="col-md-6">
+    <h2>Update Admin</h2>
+  </div>
+  <br>
+
+  <div class="col-md-6">
+    <form [formGroup]="updateAdminForm" (ngSubmit)="updateAdmin()">
+      <input type="hidden" formControlName="id">
+
+
+      <div class="form-group mb-3">
+        <label for="username">Username</label>
+        <input type="text" class="form-control" id="username" formControlName="username" placeholder="{{admin.username}}" />
+        @if (username?.hasError('required') && username?.touched) {
+        <div class="text-danger">Username is required</div>
+        }
+      </div>
+
+      <div class="form-group mb-3">
+        <label for="email">Email</label>
+        <input type="email" class="form-control" id="email" formControlName="email" placeholder="{{admin.email}}" />
+        @if (email?.hasError('required') && email?.touched) {
+        <div class="text-danger">Email is required</div>
+        }
+        @if (email?.hasError('email') && email?.touched) {
+        <div class="text-danger">Invalid email format</div>
+        }
+      </div>
+
+      <div class="form-group mb-3">
+        <label for="password">Password</label>
+        <input type="password" class="form-control" id="password" formControlName="password" placeholder="Enter a new password or leave unchanged" />
+        @if (password?.hasError('required') && password?.touched) {
+        <div class="text-danger">Password is required</div>
+        }
+        @if (password?.hasError('minlength') && password?.touched) {
+        <div class="text-danger">Password must be at least 6 characters long</div>
+        }
+      </div>
+
+      <div class="d-grid">
+        <button type="submit" class="btn btn-warning btn-block" [disabled]="updateAdminForm.invalid">Save Changes</button>
+      </div>
+
+      @if (viewMessage) {
+      <div class="alert alert-success mt-4">
+        {{ viewMessage }}
+      </div>
+      }
+    </form>
+  </div>
+</div>

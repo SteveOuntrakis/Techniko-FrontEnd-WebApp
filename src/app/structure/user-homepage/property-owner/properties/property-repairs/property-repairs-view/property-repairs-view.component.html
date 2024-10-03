@@ -1,7 +1,5 @@
 <div class="container-fluid">
-    <br>
-
-    <h4>Your Repairs</h4>
+    <h2>Your Repairs</h2>
     <br>
     <div class="row">
         @for(repair of propertyRepairs; track repair){ 
@@ -10,8 +8,9 @@
                     <div class="card-body">
                         <h5 class="card-title">ID: {{ repair.id }}</h5>
                         <p class="card-text">Type: {{ repair.repairType }}</p>
-                        <p class="card-text">Proposed_Cost: {{ repair.proposedCost }}</p>
+                        <p class="card-text">Proposed_Cost: {{ repair.cost}}</p>
                         <p class="card-text">Description: {{ repair.shortDescription }}</p>
+                        <a href="#" class="btn btn-info">See Repair</a>
                     </div>
                 </div>
             </div>
@@ -19,7 +18,7 @@
     </div>
     <br><br>
 
-    <h4>Delete a Repair Request</h4>
+    <h2>Delete a Repair Request</h2>
     <br>
     <form [formGroup]="viewPropertyRepairForm" (ngSubmit)="viewPropertyRepair()">
         <div class="form-group">

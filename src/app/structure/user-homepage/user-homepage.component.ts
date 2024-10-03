@@ -5,18 +5,22 @@ import { AdminComponent } from "../admin-homepage/admin/admin.component";
 import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
 import { PropertyService } from '../../services/property.service';
 import { PropertyRepairService } from '../../services/property-repair.service';
+import { PropertyOwner } from '../../models/propertyOwner';
+import { Property } from '../../models/property';
+import { PropertyRepair } from '../../models/propertyRepair';
+import { SlicePipe } from '@angular/common';
 
 @Component({
   selector: 'app-user-homepage',
   standalone: true,
-  imports: [RouterOutlet,RouterLink,RouterLinkActive,PropertyOwnerComponent,AdminComponent],
+  imports: [RouterOutlet,RouterLink,RouterLinkActive,PropertyOwnerComponent,AdminComponent,SlicePipe],
   templateUrl: './user-homepage.component.html',
   styleUrl: './user-homepage.component.css'
 })
 export class UserHomepageComponent implements OnInit{
-  user: any = {};  // Replace with proper User model
-  properties: any[] = [];  // Replace with Property model
-  pendingRepairs: any[] = [];  // Replace with Repair model
+  user!: PropertyOwner;  
+  properties!: Property[];
+  pendingRepairs!: PropertyRepair[];
 
   constructor(
     private ownerService: PropertyOwnerService,
@@ -38,13 +42,13 @@ export class UserHomepageComponent implements OnInit{
 
   loadProperties() {
     this.propertyService.getPropertiesByUserId(1).subscribe(data => {
-      this.properties = data.filter((property: any) => !property.deleted);
+      this.properties = data.filter((property: Property) => !property.deleted);
     });
   }
 
   loadPendingRepairs() {
     this.repairService.findPendingRepairsByProperty(1).subscribe(data => {
-      this.pendingRepairs = data.filter((repair: any) => !repair.deleted);;
+      this.pendingRepairs = data.filter((repair: PropertyRepair) => !repair.deleted);;
     });
   }
 }

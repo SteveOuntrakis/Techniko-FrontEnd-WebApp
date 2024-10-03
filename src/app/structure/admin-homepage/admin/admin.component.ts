@@ -13,7 +13,6 @@ export class AdminComponent implements OnInit{
   createAdminForm! : FormGroup;
   private service = inject(AdminService);
 
-  users : any;
   viewMessage: string='';
 
   fb = inject(FormBuilder);
@@ -27,7 +26,6 @@ export class AdminComponent implements OnInit{
     });
   }
 
-  //,Validators.pattern("^[a-zA-Z0-9@$#!%&]+$")
   get username(){
     return this.createAdminForm.get('username');
   }

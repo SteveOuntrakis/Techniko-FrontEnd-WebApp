@@ -2,6 +2,7 @@ import { JsonPipe } from '@angular/common';
 import { Component, inject, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { PropertyService } from '../../../../../services/property.service';
+import { Property } from '../../../../../models/property';
 
 @Component({
   selector: 'app-property-view',
@@ -12,7 +13,7 @@ import { PropertyService } from '../../../../../services/property.service';
 })
 
 export class PropertyviewComponent implements OnInit {
-  properties: any[] = []; 
+  properties!: Property[];
   viewPropertyForm!: FormGroup;
   viewMessage: string = '';  
 
@@ -27,8 +28,8 @@ export class PropertyviewComponent implements OnInit {
   }
 
   loadProperties() {
-    this.propertyService.getPropertiesByUserId(1).subscribe((data: any) => {
-      this.properties = data.filter((property: any) => !property.deleted);
+    this.propertyService.getPropertiesByUserId(1).subscribe((data: Property[]) => {
+      this.properties = data.filter((property: Property) => !property.deleted);
     });
   }
   viewProperty() {

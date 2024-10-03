@@ -1,3 +1,5 @@
+import { Property } from "./property";
+
 export class PropertyOwner {
   id!: number;
   username! : string;
@@ -8,4 +10,6 @@ export class PropertyOwner {
   vatNumber!: string;
   phoneNumber!: string;
   address!: string;
+  deleted!:boolean;
+  properties!:Property[];
 }

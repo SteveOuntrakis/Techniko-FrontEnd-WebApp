@@ -2,6 +2,7 @@ import { JsonPipe } from '@angular/common';
 import { Component, inject, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { PropertyRepairService } from '../../../../../../services/property-repair.service';
+import { PropertyRepair } from '../../../../../../models/propertyRepair';
 
 @Component({
   selector: 'app-property-repairs-view',
@@ -11,26 +12,26 @@ import { PropertyRepairService } from '../../../../../../services/property-repai
   styleUrl: './property-repairs-view.component.css'
 })
 export class PropertyRepairsViewComponent implements OnInit {
-  propertyRepairs: any[] = []; 
+  propertyRepairs!: PropertyRepair[];
   viewPropertyRepairForm!: FormGroup;
   viewMessage: string = '';  
 
   private propertyRepairService = inject(PropertyRepairService);
   private fb = inject(FormBuilder);
 
-  ngOnInit() {
+  ngOnInit():void {
     this.loadProperties(); 
     this.viewPropertyRepairForm = this.fb.group({
       propertyRepairId: ['', Validators.required]
     });
   }
 
-  loadProperties() {
-    this.propertyRepairService.findRepairsByProperty(3).subscribe((data: any) => {
-      this.propertyRepairs = data.filter((property: any) => !property.deleted);
+  loadProperties():void {
+    this.propertyRepairService.findRepairsByProperty(1).subscribe((data: PropertyRepair[]) => {
+      this.propertyRepairs = data.filter((propertyRepair: PropertyRepair) => !propertyRepair.deleted);
     });
   }
-  viewPropertyRepair() {
+  viewPropertyRepair():void {
     const propertyRepairId = this.viewPropertyRepairForm.get('propertyRepairId')?.value;
     const propertyToview = this.propertyRepairs.find(propertyRepair => propertyRepair.id === +propertyRepairId);
 

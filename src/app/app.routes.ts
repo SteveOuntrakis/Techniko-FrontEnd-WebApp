@@ -1,23 +1,20 @@
 import { Routes } from '@angular/router';
 import { UserHomepageComponent } from './structure/user-homepage/user-homepage.component';
 import { AdminComponent } from './structure/admin-homepage/admin/admin.component';
-import { AdminHomepageComponent } from './structure/admin-homepage/admin-homepage.component';
 import { PropertyOwnerComponent } from './structure/user-homepage/property-owner/property-owner.component';
 import { PropertiesComponent } from './structure/user-homepage/property-owner/properties/properties.component';
 import { FileNotFoundComponent } from './structure/file-not-found/file-not-found.component';
 import { PropertyRepairsComponent } from './structure/user-homepage/property-owner/properties/property-repairs/property-repairs.component';
 import { UserUpdateComponent } from './structure/user-homepage/user-update/user-update.component';
-import { AdminUpdateComponent } from './structure/admin-homepage/admin/admin-update/admin-update.component';
+import { AdminUpdateComponent } from './structure/admin-homepage/admin-update/admin-update.component';
 import { UserSearchComponent } from './structure/user-homepage/user-search/user-search.component';
 import { PropertyUpdateComponent } from './structure/user-homepage/property-owner/properties/property-update/property-update.component';
 import { PropertyviewComponent } from './structure/user-homepage/property-owner/properties/property-view/property-view.component';
-import { AdminViewComponent } from './structure/admin-homepage/admin/admin-view/admin-view.component';
+import { AdminViewComponent } from './structure/admin-homepage/admin-view/admin-view.component';
 import { PropertyRepairsViewComponent } from './structure/user-homepage/property-owner/properties/property-repairs/property-repairs-view/property-repairs-view.component';
 
 export const routes: Routes = [
-    {path:'UserHome',component:UserHomepageComponent},
-    {path:'AdminHome',component:AdminHomepageComponent},
-  
+    {path:'UserHome',component:UserHomepageComponent},  
 
     {path: 'User',component:PropertyOwnerComponent},
     {path: 'user/update', component: UserUpdateComponent },

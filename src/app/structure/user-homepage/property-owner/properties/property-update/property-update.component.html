@@ -1,46 +1,56 @@
-<h3>Update the {{property.propertyType}} in {{property.address}} </h3>
+<div class="container-fluid">
+    <div class="col-md-3">
+      <!-- <h3>Update the {{property.propertyType}} in {{property.address}}</h3> -->
+    </div>
+    <br>
 
+    <div class="col-md-5">
+      <form [formGroup]="updatePropertyForm" (ngSubmit)="updateProperty()">
 
-<form [formGroup]="updatePropertyForm" (ngSubmit)="updateProperty()">
-  <br>
-  <label for="address">Address: </label>
-  <input type="text" formControlName="address" id="address" placeholder="{{property?.address}}">
-  @if (address?.hasError('required') && address?.touched) {
-  <div class="error">Address is required</div>
-  }
-  <br><br>
-  <label for="yearOfConstruction">Year of Construction</label>
-  <input type="number" formControlName="yearOfConstruction" id="yearOfConstruction"
-    placeholder="{{property?.yearOfConstruction}}">
-  @if (yearOfConstruction?.hasError('required') && yearOfConstruction?.touched) {
-  <div class="error">Year of construction is required</div>
-  }
-  @if (yearOfConstruction?.hasError('min') && yearOfConstruction?.touched) {
-  <div class="error">Year must be after 1900</div>
-  }
-  @if (yearOfConstruction?.hasError('max') && yearOfConstruction?.touched) {
-  <div class="error">Year cannot be in the future</div>
-  }
-  <br><br>
-  <div class="col-1">
-    <div class="input-group">
-      <select formControlName="propertyType">
-        <option [value]="0">House</option>
-        <option [value]="1">Apartment</option>
-        <option [value]="2">Detached_House</option>
-        <option [value]="3">Maisonette</option>
-      </select>
+        <div class="form-group mb-3">
+          <label for="address">Address</label>
+          <input type="text" class="form-control" formControlName="address" id="address" placeholder="Enter new address" />
+          @if (address?.hasError('required') && address?.touched) {
+          <div class="text-danger">Address is required</div>
+          }
+        </div>
+
+        <div class="form-group mb-3">
+          <label for="yearOfConstruction">Year of Construction</label>
+          <input type="number" class="form-control" formControlName="yearOfConstruction" id="yearOfConstruction" placeholder="Enter year of construction" />
+          @if (yearOfConstruction?.hasError('required') && yearOfConstruction?.touched) {
+          <div class="text-danger">Year of construction is required</div>
+          }
+          @if (yearOfConstruction?.hasError('min') && yearOfConstruction?.touched) {
+          <div class="text-danger">Year must be after 1900</div>
+          }
+          @if (yearOfConstruction?.hasError('max') && yearOfConstruction?.touched) {
+          <div class="text-danger">Year cannot be in the future</div>
+          }
+        </div>
+        
+        <div class="form-group mb-3">
+          <label for="propertyType">Property Type</label>
+          <select class="form-select" formControlName="propertyType">
+            <option [value]="0">House</option>
+            <option [value]="1">Apartment</option>
+            <option [value]="2">Detached House</option>
+            <option [value]="3">Maisonette</option>
+          </select>
+          @if (propertyType?.hasError('required') && propertyType?.touched) {
+          <div class="text-danger">Property type is required</div>
+          }
+        </div>
+
+        <div class="d-grid">
+          <button type="submit" class="btn btn-warning btn-block" [disabled]="updatePropertyForm.invalid">Save</button>
+        </div>
+
+        @if (viewMessage) {
+        <div class="alert alert-success mt-4">
+          {{ viewMessage }}
+        </div>
+        }
+      </form>
     </div>
   </div>
-  @if (propertyType?.hasError('required') && propertyType?.touched) {
-  <div class="error">Property type is required</div>
-  }
-  <br><br>
-  <button type="submit" class="btn btn-warning" [disabled]="updatePropertyForm.invalid">Save</button>
-
-  @if (viewMessage) {
-  <div class="alert alert-success mt-4">
-    {{ viewMessage }}
-  </div>
-  }
-</form>

@@ -1,48 +1,57 @@
-<h2>Insert a new Property:</h2>
-<br>
-<form [formGroup]="createPropertyForm" (ngSubmit)="CreateProperty()">
-  <input type="text" formControlName="address" placeholder="Address">
-  @if (address?.hasError('required') && address?.touched) {<div>Address Required</div>}
+<div class="container-fluid">
+  <div class="col-md-3">
+    <h2>Insert a new Property:</h2>
+  </div>
+  <br>
 
-  <br><br>
+  <div class="col-md-5">
+    <form [formGroup]="createPropertyForm" (ngSubmit)="CreateProperty()">
+      <div class="form-group mb-3">
+        <label for="address">Address</label>
+        <input type="text" class="form-control" formControlName="address" id="address" placeholder="Enter property address" />
+        @if (address?.hasError('required') && address?.touched) {
+        <div class="text-danger">Address is required</div>
+        }
+      </div>
 
-  <input type="number" formControlName="yearOfConstruction" placeholder="Year of Construction" form>
-  @if (yearOfConstruction?.hasError('required') && yearOfConstruction?.touched) {<div>Year of Construction Required</div>}
+      <div class="form-group mb-3">
+        <label for="yearOfConstruction">Year of Construction</label>
+        <input type="number" class="form-control" formControlName="yearOfConstruction" id="yearOfConstruction" placeholder="Enter year of construction" />
+        @if (yearOfConstruction?.hasError('required') && yearOfConstruction?.touched) {
+        <div class="text-danger">Year of construction is required</div>
+        }
+      </div>
 
-  <br><br>
-
-  <div class ="col-1">
-  <div class="input-group" >   
-    <select formControlName="propertyType">
+      <div class="form-group mb-3">
+        <label for="propertyType">Property Type</label>
+        <select class="form-select" formControlName="propertyType">
           <option [value]="0">House</option>
           <option [value]="1">Apartment</option>
-          <option [value]="2">Detached_House</option>
+          <option [value]="2">Detached House</option>
           <option [value]="3">Maisonette</option>
-      </select>
-    </div>
+        </select>
+        @if (propertyType?.hasError('required') && propertyType?.touched) {
+        <div class="text-danger">Property type is required</div>
+        }
+      </div>
+
+      <div class="d-grid">
+        <button type="submit" class="btn btn-success btn-block" [disabled]="createPropertyForm.invalid">Create Property</button>
+      </div>
+
+      @if (viewMessage) {
+      <div class="alert alert-success mt-4">
+        {{ viewMessage }}
+      </div>
+      }
+    </form>
   </div>
-  @if (propertyType?.hasError('required') && propertyType?.touched) {<div>Property Type Required</div>}
-  
+
   <br><br>
+  <hr>
 
-  <!-- Owner Information (Hardcoded for this example, you can change as necessary) -->
-  <!-- <h3>Owner Information (Already fetched)</h3>
-  <pre>{{ owner | json }}</pre>
-
-  <br><br> -->
-
-  <button type="submit" class="btn btn-success" [disabled]="createPropertyForm.invalid">Create Property</button>
-</form>
-
-@if (viewMessage) {<div class="alert alert-success mt-4">
-  {{ viewMessage }}
+  <div class="d-grid gap-2 d-md-flex justify-content-md-start">
+    <button class="btn btn-primary" (click)="goHome()">Go Home</button>
+    <button class="btn btn-secondary" (click)="goRepairs()">Go to Repairs</button>
+  </div>
 </div>
-}
-
-<br><br>
-
-<hr>
-
-<button (click)="goHome()">Go home</button>
-
-<button (click)="goRepairs()"> Go Repairs </button>

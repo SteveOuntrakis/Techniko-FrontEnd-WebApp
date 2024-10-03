@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
 import { PropertyOwnerService } from '../../../services/property-owner.service';
 import { JsonPipe } from '@angular/common';
+import { PropertyOwner } from '../../../models/propertyOwner';
 
 @Component({
   selector: 'app-user-search',
@@ -11,9 +12,7 @@ import { JsonPipe } from '@angular/common';
   styleUrl: './user-search.component.css'
 })
 export class UserSearchComponent implements OnInit{
-  user: any = {};  // Replace with proper User model
-  users: any[] = [];  // Replace with Property model
-  pendingRepairs: any[] = [];  // Replace with Repair model
+  users!: PropertyOwner[];
 
   constructor(
     private ownerService: PropertyOwnerService
@@ -24,7 +23,7 @@ export class UserSearchComponent implements OnInit{
   }
 
   loadUserData() {
-    this.ownerService.getAllPropertyOwners().subscribe((data:any) => {
+    this.ownerService.getAllPropertyOwners().subscribe((data:PropertyOwner[]) => {
       this.users = data;
     });
   }

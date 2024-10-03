@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angula
 import { PropertyRepairService } from '../../../../../services/property-repair.service';
 import { PropertyService } from '../../../../../services/property.service';
 import { JsonPipe } from '@angular/common';
+import { Property } from '../../../../../models/property';
 
 @Component({
   selector: 'app-property-repairs',
@@ -13,7 +14,7 @@ import { JsonPipe } from '@angular/common';
 })
 export class PropertyRepairsComponent implements OnInit {
   createRepairForm!: FormGroup;
-  property: any; 
+  property!: Property; 
   private repairService = inject(PropertyRepairService);
   private propertyService = inject(PropertyService);
   viewMessage: string = '';  
@@ -41,14 +42,14 @@ export class PropertyRepairsComponent implements OnInit {
     return this.createRepairForm.get('repairType');
   }
 
-  loadProperty() {
-    this.propertyService.getPropertyById(3).subscribe(data => {
+  loadProperty():void {
+    this.propertyService.getPropertyById(1).subscribe(data => {
       this.property = data;
       this.createRepairForm.patchValue({ property: { id: this.property.id } });
     });
   }
 
-  CreateRepair() {
+  CreateRepair():void {
     if (this.createRepairForm.valid) {
 
       const date = new Date();

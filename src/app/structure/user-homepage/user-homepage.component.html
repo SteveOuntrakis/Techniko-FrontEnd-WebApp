@@ -1,41 +1,41 @@
 <div class="container-fluid">
-  <h1>Welcome {{ user.name }}!</h1>
+  <br>
+  <h1>Welcome {{ user.username }}!</h1>
   <br><br>
+
   <h3>My Properties</h3>
   <br>
   <div class="row">
-    @for (property of properties; track property){
-    <div class="col-md-2">
-
-      <div class="card">
-        <div class="card-body">
-          <h5 class="card-text">{{ property.address }}</h5>
-          <p class="card-text">{{ property.propertyType }}</p>
-          <p class="card-text">{{ property.yearOfConstruction }}</p>
+    @for (property of properties | slice:0:5; track property) {
+      <div class="col-md-2">
+        <div class="card">
+          <div class="card-body">
+            <h3 class="card-title">{{ property.address }}</h3>
+            <p class="card-text">{{ property.propertyType }}</p>
+            <p class="card-text">{{ property.yearOfConstruction }}</p>
+            <a href="#" class="btn btn-info">See Property</a>
+          </div>
         </div>
       </div>
-
-    </div>
     }
   </div>
 
   <br>
+
   <h3>My Pending Repairs</h3>
   <br>
   <div class="row">
-    @for (repair of pendingRepairs; track repair){
-    <div class="col-md-2">
-      <div class="card">
-        <div class="card-body">
-          <p class="card-text">{{ repair.property.address }}</p>
-          <p class="card-text">{{ repair.property.propertyType }}</p>
-          <p class="card-text">{{ repair.repairType }}</p>
-          <p class="card-text">{{ repair.status }}</p>
+    @for (repair of pendingRepairs | slice:0:5; track repair) {
+      <div class="col-md-2 mb-4">
+        <div class="card">
+          <div class="card-body">
+            <h4 class="card-text">{{ repair.property.address }}</h4>
+            <p class="card-text">{{ repair.property.propertyType }}</p>
+            <p class="card-text">{{ repair.repairType }}</p>
+            <a href="#" class="btn btn-info">See Repair</a>
+          </div>
         </div>
       </div>
-    </div>
     }
   </div>
-  <br>
-  <h3>My Repairs in Progress:</h3>
 </div>

@@ -1,11 +1,10 @@
 <div class="container-fluid">
-    <br>
 
-    <h4>Admins</h4>
+    <h2>Admins</h2>
     <br>
     <div class="row">
         @for(admin of admins; track admin){ 
-            <div class="col-md-4">
+            <div class="col-md-3">
                 <div class="card">
                     <div class="card-body">
                         <h5 class="card-title">ID: {{ admin.id }}</h5>
@@ -18,7 +17,7 @@
     </div>
     <br><br>
 
-    <h4>view an Admin</h4>
+    <h2>Delete an Admin</h2>
     <br>
     <form [formGroup]="viewadminForm" (ngSubmit)="viewadmin()">
         <div class="form-group">

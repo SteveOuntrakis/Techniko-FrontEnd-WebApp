@@ -1,33 +1,46 @@
-<h2>Request new Repair for your Property in {{property.address}}</h2>
-<br>
-<form [formGroup]="createRepairForm" (ngSubmit)="CreateRepair()">
-  <input type="text" formControlName="shortDescription" placeholder="Short Description">
-  @if (shortDescription?.hasError('required') && shortDescription?.touched) {<div>Short Description Required</div>}
-
-  <br><br>
-
-  <textarea formControlName="description" placeholder="Description"></textarea>
-
-  <br><br>
-
-  <label for="repairType">Repair Type</label>
-  <select formControlName="repairType">
-    <option [value]="0">PAINTING</option>
-    <option [value]="1">INSULATION</option>
-    <option [value]="2">FRAMES</option>
-    <option [value]="3">PLUMBING</option>
-    <option [value]="3">ELECTRICAL_WORK</option>
-  </select>
-
-  <br><br>
-
-  <button type="submit" class="btn btn-success" [disabled]="createRepairForm.invalid">Create Property Repair</button>
-
-  @if (viewMessage) {
-  <div class="alert alert-success mt-4">
-    {{ viewMessage }}
+<div class="container-fluid">
+  <div class="col-md-6">
+    <h2>Request New Repair for Your Property in {{property.address}}</h2>
   </div>
-  }
-</form>
+  <br>
+
+  <div class="col-md-5">
+    <form [formGroup]="createRepairForm" (ngSubmit)="CreateRepair()">
+      <div class="form-group mb-3">
+        <label for="shortDescription">Short Description</label>
+        <input type="text" class="form-control" formControlName="shortDescription" id="shortDescription" placeholder="Enter short description of the issue" />
+        @if (shortDescription?.hasError('required') && shortDescription?.touched) {
+        <div class="text-danger">Short description is required</div>
+        }
+      </div>
+
+      <div class="form-group mb-3">
+        <label for="description">Description</label>
+        <textarea class="form-control" formControlName="description" id="description" rows="3" placeholder="Provide a detailed description"></textarea>
+      </div>
+
+      <div class="form-group mb-3">
+        <label for="repairType">Repair Type</label>
+        <select class="form-select" formControlName="repairType" id="repairType">
+          <option [value]="0">Painting</option>
+          <option [value]="1">Insulation</option>
+          <option [value]="2">Frames</option>
+          <option [value]="3">Plumbing</option>
+          <option [value]="4">Electrical Work</option>
+        </select>
+      </div>
+
+      <div class="d-grid">
+        <button type="submit" class="btn btn-success btn-block" [disabled]="createRepairForm.invalid">Create Property Repair</button>
+      </div>
+
+      @if (viewMessage) {
+      <div class="alert alert-success mt-4">
+        {{ viewMessage }}
+      </div>
+      }
+    </form>
+  </div>
+</div>
 
 <br><br>

@@ -10,41 +10,41 @@ export class PropertyRepairService {
 
   http = inject(HttpClient);
 
-  getAllPropertyRepairs() {
+  getAllPropertyRepairs(): Observable<PropertyRepair[]> {
     const url = 'http://localhost:8080/Techniko/propertyRepair';
-    return this.http.get(url);
+    return this.http.get<PropertyRepair[]>(url);
   }
 
-  getPropertyRepairsById(id : any) {
+  getPropertyRepairsById(id : number): Observable<PropertyRepair> {
     const url = `http://localhost:8080/Techniko/propertyRepair/${id}`;
-    return this.http.get(url);
+    return this.http.get<PropertyRepair>(url);
   }
 
-  postPropertyRepair(repair: any) {
+  postPropertyRepair(repair: PropertyRepair): Observable<PropertyRepair> {
     const header = new HttpHeaders()
       .set('Content-Type', 'application/json');
 
     const url = 'http://localhost:8080/Techniko/propertyRepair';
 
-    return this.http.post(url, JSON.stringify(repair), { headers: header });
+    return this.http.post<PropertyRepair>(url, JSON.stringify(repair), { headers: header });
   }
 
-  findPendingStatus() {
+  findPendingStatus() : Observable<PropertyRepair[]>{
     const url = 'http://localhost:8080/Techniko/propertyRepair/pending';
-    return this.http.get(url);
+    return this.http.get<PropertyRepair[]>(url);
   }
   
-  findRepairsByProperty(id : any) {
+  findRepairsByProperty(id : number): Observable<PropertyRepair[]> {
     const url = `http://localhost:8080/Techniko/propertyRepair/property/${id}`;
-    return this.http.get(url);
+    return this.http.get<PropertyRepair[]>(url);
   }
 
-   findPendingRepairsByProperty(id : any) : Observable<PropertyRepair[]> {
+   findPendingRepairsByProperty(id : number) : Observable<PropertyRepair[]> {
     const url = `http://localhost:8080/Techniko/propertyRepair/pending/${id}`;
     return this.http.get<PropertyRepair[]>(`${url}`);
   }
 
-  deletePropertyRepairById(id: any) {
+  deletePropertyRepairById(id: number) {
     const url = `http://localhost:8080/Techniko/propertyRepair/${id}`;
     return this.http.delete(url);
   }

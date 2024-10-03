@@ -1,17 +1,16 @@
 <div class="container-fluid">
-    <br>
-
-    <h4>Your Properties</h4>
+    <h2>Your Properties</h2>
     <br>
     <div class="row">
         @for(property of properties; track property){ 
-            <div class="col-md-4">
+            <div class="col-md-3">
                 <div class="card">
                     <div class="card-body">
                         <h5 class="card-title">Property ID: {{ property.id }}</h5>
                         <p class="card-text">Address: {{ property.address }}</p>
                         <p class="card-text">Property Type: {{ property.propertyType }}</p>
                         <p class="card-text">Year of Construction: {{ property.yearOfConstruction }}</p>
+                        <a href="#" class="btn btn-info">See Property</a>
                     </div>
                 </div>
             </div>
@@ -19,7 +18,7 @@
     </div>
     <br><br>
 
-    <h4>view a Property</h4>
+    <h2>Delete a Property</h2>
     <br>
     <form [formGroup]="viewPropertyForm" (ngSubmit)="viewProperty()">
         <div class="form-group">

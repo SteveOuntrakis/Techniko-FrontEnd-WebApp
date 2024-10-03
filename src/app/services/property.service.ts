@@ -10,38 +10,38 @@ export class PropertyService {
 
   http = inject(HttpClient);
 
-  getAllProperties() {
+  getAllProperties():Observable<Property[]> {
     const url = 'http://localhost:8080/Techniko/property';
-    return this.http.get(url);
+    return this.http.get<Property[]>(url);
   }
 
-  getPropertyById(id: any) {
+  getPropertyById(id: number):Observable<Property> {
     const url = `http://localhost:8080/Techniko/property/${id}`;
-    return this.http.get(url);
+    return this.http.get<Property>(url);
   }
 
-  getPropertiesByUserId(id:any): Observable<Property[]> {
+  getPropertiesByUserId(id:number): Observable<Property[]> {
     const url = `http://localhost:8080/Techniko/property/properties/${id}`;
     return this.http.get<Property[]>(`${url}`);
   }
 
-  postProperty(repair: any) {
+  postProperty(property: Property):Observable<Property> {
     const header = new HttpHeaders()
       .set('Content-Type', 'application/json');
 
     const url = 'http://localhost:8080/Techniko/property';
 
-    return this.http.post(url, JSON.stringify(repair), { headers: header });
+    return this.http.post<Property>(url, JSON.stringify(property), { headers: header });
   }
 
-  updateProperty(id: any, updatedProperty: any) {
+  updateProperty(id: number, updatedProperty: Property):Observable<Property> {
     const url = `http://localhost:8080/Techniko/property/${id}`;
     const headers = new HttpHeaders().set('Content-Type', 'application/json');
   
-    return this.http.post(url, JSON.stringify(updatedProperty), { headers });
+    return this.http.post<Property>(url, JSON.stringify(updatedProperty), { headers });
   }
 
-  deletePropertyById(id: any) {
+  deletePropertyById(id: number) {
     const url = `http://localhost:8080/Techniko/property/${id}`;
     return this.http.delete(url);
   }

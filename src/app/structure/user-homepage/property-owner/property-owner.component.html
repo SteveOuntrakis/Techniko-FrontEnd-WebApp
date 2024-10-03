@@ -1,56 +1,101 @@
-<h2>Insert a new Property Owner :</h2>
-<br>
-<form [formGroup]="createOwnerForm" (ngSubmit)="CreateOwner()">
-    <input type="text" formControlName="username" placeholder="username">
-    @if (username?.hasError('required') && username?.touched) {<div >Username Required</div>}
-    @if (username?.hasError('maxlength') && username?.touched) {<div >Username can't exceed 20 letters</div>}
-    <br><br>
-
-    <input type="text" formControlName="name" placeholder="first name">
-    @if (name?.hasError('required') && name?.touched) {<div>Name Required</div>}
-    <br><br>
-
-    <input type="text" formControlName="surname" placeholder="surname">
-    @if (surname?.hasError('required') && surname?.touched) {<div>Surname Required</div>}
-    
-
-    <br><br>
-
-    <input type="text" formControlName="address" placeholder="address">
-    @if (address?.hasError('required') && address?.touched) { <div >Address Required</div>}
-   
-
-    <br><br>
-
-    <input type="text" formControlName="phoneNumber" placeholder="phone number">
-    @if (phoneNumber?.hasError('required') && phoneNumber?.touched) {<div>Phone Number Required</div>}
-    @if (phoneNumber?.hasError('pattern') && phoneNumber?.touched) {<div>Phone Number should be valid </div>}
-    
-    <br><br>
-
-    <input type="text" formControlName="vatNumber" placeholder="vat number">
-    @if (vatNumber?.hasError('required') && vatNumber?.touched) {<div >VAT Number Required</div>}
-    @if (vatNumber?.hasError('maxlength') && vatNumber?.touched) {<div >VAT Number must be exactly 9 digits</div>}
-
-    <br><br>
-
-    <input type="email" formControlName="email" placeholder="email">
-    @if (email?.hasError('required') && email?.touched) {<div >Email Required</div>}
-    @if (email?.hasError('email') && email?.touched) {<div >Invalid email format</div>}
-    <br><br>
-
-    <input type="password" formControlName="password" placeholder="enter your password">
-    @if (password?.hasError('required') && password?.touched) {<div >Password Required</div>}
-    @if (password?.hasError('minlength') && password?.touched) {<div >Password must have at least 4 characters</div>}
-    <br><br>
-
-    <button type="submit" class="btn btn-success" [disabled]="createOwnerForm.invalid" >Create Property Owner</button>
-
-    @if (viewMessage) {<div class="alert alert-success mt-4">
-        {{ viewMessage }}
+<div class="container-fluid">
+    <div class="col-md-6">
+      <h2>Insert a new Property Owner</h2>
     </div>
-    }
-</form>
+    <br>
+  
+    <div class="col-md-6">
+      <form [formGroup]="createOwnerForm" (ngSubmit)="CreateOwner()">
+  
+        <div class="form-group mb-3">
+          <label for="username">Username</label>
+          <input type="text" class="form-control" formControlName="username" id="username" placeholder="Enter username" />
+          @if (username?.hasError('required') && username?.touched) {
+          <div class="text-danger">Username is required</div>
+          }
+          @if (username?.hasError('maxlength') && username?.touched) {
+          <div class="text-danger">Username can't exceed 20 characters</div>
+          }
+        </div>
+  
+        <div class="form-group mb-3">
+          <label for="name">First Name</label>
+          <input type="text" class="form-control" formControlName="name" id="name" placeholder="Enter first name" />
+          @if (name?.hasError('required') && name?.touched) {
+          <div class="text-danger">First name is required</div>
+          }
+        </div>
+  
+        <div class="form-group mb-3">
+          <label for="surname">Surname</label>
+          <input type="text" class="form-control" formControlName="surname" id="surname" placeholder="Enter surname" />
+          @if (surname?.hasError('required') && surname?.touched) {
+          <div class="text-danger">Surname is required</div>
+          }
+        </div>
+  
+        <div class="form-group mb-3">
+          <label for="address">Address</label>
+          <input type="text" class="form-control" formControlName="address" id="address" placeholder="Enter address" />
+          @if (address?.hasError('required') && address?.touched) {
+          <div class="text-danger">Address is required</div>
+          }
+        </div>
+  
+        <div class="form-group mb-3">
+          <label for="phoneNumber">Phone Number</label>
+          <input type="text" class="form-control" formControlName="phoneNumber" id="phoneNumber" placeholder="Enter phone number" />
+          @if (phoneNumber?.hasError('required') && phoneNumber?.touched) {
+          <div class="text-danger">Phone number is required</div>
+          }
+          @if (phoneNumber?.hasError('pattern') && phoneNumber?.touched) {
+          <div class="text-danger">Phone number must be valid</div>
+          }
+        </div>
+  
+        <div class="form-group mb-3">
+          <label for="vatNumber">VAT Number</label>
+          <input type="text" class="form-control" formControlName="vatNumber" id="vatNumber" placeholder="Enter VAT number" />
+          @if (vatNumber?.hasError('required') && vatNumber?.touched) {
+          <div class="text-danger">VAT number is required</div>
+          }
+          @if (vatNumber?.hasError('maxlength') && vatNumber?.touched) {
+          <div class="text-danger">VAT number must be exactly 9 digits</div>
+          }
+        </div>
+  
+        <div class="form-group mb-3">
+          <label for="email">Email</label>
+          <input type="email" class="form-control" formControlName="email" id="email" placeholder="Enter email" />
+          @if (email?.hasError('required') && email?.touched) {
+          <div class="text-danger">Email is required</div>
+          }
+          @if (email?.hasError('email') && email?.touched) {
+          <div class="text-danger">Invalid email format</div>
+          }
+        </div>
+  
+        <div class="form-group mb-3">
+          <label for="password">Password</label>
+          <input type="password" class="form-control" formControlName="password" id="password" placeholder="Enter password" />
+          @if (password?.hasError('required') && password?.touched) {
+          <div class="text-danger">Password is required</div>
+          }
+          @if (password?.hasError('minlength') && password?.touched) {
+          <div class="text-danger">Password must be at least 4 characters</div>
+          }
+        </div>
+  
+        <div class="d-grid">
+          <button type="submit" class="btn btn-success btn-block" [disabled]="createOwnerForm.invalid">Create Property Owner</button>
+        </div>
 
-<br><br>
-<br><br>
+        @if (viewMessage) {
+        <div class="alert alert-success mt-4">
+          {{ viewMessage }}
+        </div>
+        }
+      </form>
+    </div>
+  </div>
+  

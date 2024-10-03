@@ -1,53 +1,85 @@
-<h2>Update Your Profile</h2>
-
-<form [formGroup]="updateUserForm" (ngSubmit)="updateUser()">
-
-  <label for="username">Username:</label>
-  <input type="text" id="username" formControlName="username" placeholder="{{user?.username}}">
-  @if (username?.hasError('required') && username?.touched) {<div>Username Required</div>}
-  <br><br>
-
-  <label for="name">First Name:</label>
-  <input type="text" id="name" formControlName="name" placeholder="{{user?.name}}">
-  @if (name?.hasError('required') && name?.touched) {<div>Name Required</div>}
-  <br><br>
-
-  <label for="surname">Surname:</label>
-  <input type="text" id="surname" formControlName="surname" placeholder="{{user?.surname}}">
-  @if (surname?.hasError('required') && surname?.touched) {<div>Surname Required</div>}
-  <br><br>
-
-  <label for="address">Address:</label>
-  <input type="text" id="address" formControlName="address" placeholder="{{user?.address}}">
-  @if (address?.hasError('required') && address?.touched) {<div>Address Required</div>}
-  <br><br>
-
-  <label for="phoneNumber">Phone Number:</label>
-  <input type="text" id="phoneNumber" formControlName="phoneNumber" placeholder="{{user?.phoneNumber}}">
-  @if (phoneNumber?.hasError('required') && phoneNumber?.touched) {<div>Phone Number Required</div>}
-  <br><br>
-
-  <label for="vatNumber">VAT Number:</label>
-  <input type="text" id="vatNumber" formControlName="vatNumber" placeholder="{{user?.vatNumber}}">
-  @if (vatNumber?.hasError('required') && vatNumber?.touched) {<div>VAT Number Required</div>}
-  <br><br>
-
-  <label for="email">Email:</label>
-  <input type="email" id="email" formControlName="email" placeholder="{{user?.email}}">
-  @if (email?.hasError('required') && email?.touched) {<div>Email Required</div>}
-  <br><br>
-
-  <label for="password">Password:</label>
-  <input type="password" id="password" formControlName="password" placeholder="">
-  @if (password?.hasError('required') && password?.touched) {<div>Password Required</div>}
-  <br><br>
-
-
-  <button type="submit" class="btn btn-warning" [disabled]="updateUserForm.invalid">Save</button>
-
-  @if (viewMessage) {
-  <div class="alert alert-success mt-4">
-    {{ viewMessage }}
+<div class="container-fluid">
+  <div class="col-md-6">
+    <h2>Update Your Profile</h2>
   </div>
-  }
-</form>
+  <br>
+
+  <div class="col-md-6">
+    <form [formGroup]="updateUserForm" (ngSubmit)="updateUser()">
+      
+      <div class="form-group mb-3">
+        <label for="username">Username</label>
+        <input type="text" class="form-control" id="username" formControlName="username" placeholder="Enter your username" />
+        @if (username?.hasError('required') && username?.touched) {
+        <div class="text-danger">Username is required</div>
+        }
+      </div>
+
+      <div class="form-group mb-3">
+        <label for="name">First Name</label>
+        <input type="text" class="form-control" id="name" formControlName="name" placeholder="Enter your first name" />
+        @if (name?.hasError('required') && name?.touched) {
+        <div class="text-danger">First name is required</div>
+        }
+      </div>
+
+      <div class="form-group mb-3">
+        <label for="surname">Surname</label>
+        <input type="text" class="form-control" id="surname" formControlName="surname" placeholder="Enter your surname" />
+        @if (surname?.hasError('required') && surname?.touched) {
+        <div class="text-danger">Surname is required</div>
+        }
+      </div>
+
+      <div class="form-group mb-3">
+        <label for="address">Address</label>
+        <input type="text" class="form-control" id="address" formControlName="address" placeholder="Enter your address" />
+        @if (address?.hasError('required') && address?.touched) {
+        <div class="text-danger">Address is required</div>
+        }
+      </div>
+
+      <div class="form-group mb-3">
+        <label for="phoneNumber">Phone Number</label>
+        <input type="text" class="form-control" id="phoneNumber" formControlName="phoneNumber" placeholder="Enter your phone number" />
+        @if (phoneNumber?.hasError('required') && phoneNumber?.touched) {
+        <div class="text-danger">Phone number is required</div>
+        }
+      </div>
+
+      <div class="form-group mb-3">
+        <label for="vatNumber">VAT Number</label>
+        <input type="text" class="form-control" id="vatNumber" formControlName="vatNumber" placeholder="Enter your VAT number" />
+        @if (vatNumber?.hasError('required') && vatNumber?.touched) {
+        <div class="text-danger">VAT number is required</div>
+        }
+      </div>
+
+      <div class="form-group mb-3">
+        <label for="email">Email</label>
+        <input type="email" class="form-control" id="email" formControlName="email" placeholder="Enter your email" />
+        @if (email?.hasError('required') && email?.touched) {
+        <div class="text-danger">Email is required</div>
+        }
+      </div>
+
+      <div class="form-group mb-3">
+        <label for="password">Password</label>
+        <input type="password" class="form-control" id="password" formControlName="password" placeholder="Enter a new password" />
+        @if (password?.hasError('required') && password?.touched) {
+        <div class="text-danger">Password is required</div>
+        }
+      </div>
+
+      <div class="d-grid">
+        <button type="submit" class="btn btn-warning btn-block" [disabled]="updateUserForm.invalid">Save</button>
+      </div>
+
+      @if (viewMessage) {
+      <div class="alert alert-success mt-4">
+        {{ viewMessage }}
+      </div>
+      }
+    </form>
+  </div>
+</div>

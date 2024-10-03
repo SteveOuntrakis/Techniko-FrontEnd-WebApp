@@ -1,32 +1,58 @@
-<h2>Insert a new Admin </h2>
-<br>
-<form [formGroup]="createAdminForm" (ngSubmit)="CreateAdmin()">
-    <input type="text" formControlName="username" placeholder="username">
-    @if(username!.hasError('required') && username?.touched) {<div>Username Required</div>}
-    @if(username?.hasError('minlength') && username?.touched){<div>Username needs to have at least 4 letters </div>}
-    @if(username?.hasError('maxlength') && username?.touched){<div>Username can't exceed 20 letters </div>}
-    <br><br>
-
-
-    <input type="text" formControlName="email" placeholder="e-mail">
-    @if(email!.hasError('required') && email?.touched) {<div>Email Required</div>}
-    @if(email?.hasError('email') && password?.touched){<div>Email must have a specific format... &#64; </div>}
-
-    <br><br>
-
-    <input type="text" formControlName="password" placeholder="enter your password">
-    @if (password?.hasError('required') && password?.touched) {<div>Password Required</div>}
-    @if (password?.hasError('minlength')&& password?.touched) {<div>Password must have at least 6 letters </div>}
-    <!-- @if (password?.hasError('pattern') && password?.touched) {<div>Password must have only letters </div>} -->
-
-    <br><br>
-    <button type="submit" class="btn btn-success" [disabled]="createAdminForm.invalid">Create Admin</button>
-
-    @if (viewMessage) {
-    <div class="alert alert-success mt-4">
-        {{ viewMessage }}
+<div class="container-fluid">
+    <div class="col-md-6">
+      <h2>Insert a new Admin</h2>
     </div>
-    }
-</form>
-
-<br><br>
+    <br>
+  
+    <div class="col-md-6">
+      <form [formGroup]="createAdminForm" (ngSubmit)="CreateAdmin()">
+        <div class="form-group mb-3">
+          <label for="username">Username</label>
+          <input type="text" class="form-control" formControlName="username" placeholder="Enter username" />
+          @if (username?.hasError('required') && username?.touched) {
+          <div class="text-danger">Username is required</div>
+          }
+          @if (username?.hasError('minlength') && username?.touched) {
+          <div class="text-danger">Username needs to have at least 4 characters</div>
+          }
+          @if (username?.hasError('maxlength') && username?.touched) {
+          <div class="text-danger">Username can't exceed 20 characters</div>
+          }
+        </div>
+  
+        <div class="form-group mb-3">
+          <label for="email">Email</label>
+          <input type="text" class="form-control" formControlName="email" placeholder="Enter e-mail" />
+          @if (email?.hasError('required') && email?.touched) {
+          <div class="text-danger">Email is required</div>
+          }
+          @if (email?.hasError('email') && email?.touched) {
+          <div class="text-danger">Email must be in a valid format</div>
+          }
+        </div>
+  
+        <div class="form-group mb-3">
+          <label for="password">Password</label>
+          <input type="password" class="form-control" formControlName="password" placeholder="Enter your password" />
+          @if (password?.hasError('required') && password?.touched) {
+          <div class="text-danger">Password is required</div>
+          }
+          @if (password?.hasError('minlength') && password?.touched) {
+          <div class="text-danger">Password must have at least 6 characters</div>
+          }
+        </div>
+  
+        <div class="d-grid">
+          <button type="submit" class="btn btn-success btn-block" [disabled]="createAdminForm.invalid">Create Admin</button>
+        </div>
+  
+        @if (viewMessage) {
+        <div class="alert alert-success mt-4">
+          {{ viewMessage }}
+        </div>
+        }
+      </form>
+    </div>
+  </div>
+  <br><br>
+  

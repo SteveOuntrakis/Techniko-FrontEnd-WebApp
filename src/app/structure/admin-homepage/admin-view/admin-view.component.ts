@@ -1,7 +1,8 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-import { AdminService } from '../../../../services/admin.service';
+import { AdminService } from '../../../services/admin.service';
 import { JsonPipe } from '@angular/common';
+import { Admin } from '../../../models/admin';
 
 @Component({
   selector: 'app-admin-view',
@@ -11,7 +12,7 @@ import { JsonPipe } from '@angular/common';
   styleUrl: './admin-view.component.css'
 })
 export class AdminViewComponent implements OnInit {
-  admins: any[] = []; 
+  admins: Admin[] = []; 
   viewadminForm!: FormGroup;
   viewMessage: string = '';  
 
@@ -26,7 +27,7 @@ export class AdminViewComponent implements OnInit {
   }
 
   loadadmin() {
-    this.adminService.getAllAdmins().subscribe((data: any) => {
+    this.adminService.getAllAdmins().subscribe((data: Admin[]) => {
       this.admins = data.filter((admin: any) => !admin.deleted);
     });
   }
